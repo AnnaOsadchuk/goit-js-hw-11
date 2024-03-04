@@ -17,8 +17,7 @@ function onClick(event) {
   event.preventDefault();
   const searchQuery = input.value;
   searchPixa(searchQuery)
-    .then(response => {
-      const images = response.hits.slice(0, 9);
+    .then(images => {
       const markup = createMarkup(images);
       gallery.innerHTML = '';
       gallery.insertAdjacentHTML('beforeend', markup);
@@ -28,9 +27,7 @@ function onClick(event) {
       });
     })
     .catch(message => {
-      iziToast.error();
-      ({
-        title: 'Error',
+      iziToast.error({
         titleColor: '#FFFFFF',
         titleSize: '16px',
         messageSize: '16px',

@@ -7,13 +7,21 @@ export default function searchPixa(searchQuery) {
   const SEFESEARCH = 'true';
   const Link = `${BASE_URL}?key=${API_KEY}&q=${QUERY}&image_type=${IMAGE_TYPE}&orientastion=${ORIENTATION}&seferearch=${SEFESEARCH}`;
 
-  return fetch(Link).then(resp => {
-    const message =
-      'Sorry, there are no images matching your search query. Please try again!';
+  const message =
+    'Sorry, there are no images matching your search query. Please try again!';
 
-    if (!resp.ok) {
-      throw new Error(message);
-    }
-    return resp.json();
-  });
+  return fetch(Link)
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error(message);
+      }
+      return resp.json();
+    })
+    .then(data => {
+      if (data.hits.length === 0) {
+        throw new Error(message);
+      }
+
+      return data.hits.slice(0, 9);
+    });
 }
