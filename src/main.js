@@ -2,7 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import Error_png from './img/error.png';
+import Error_png from './img/error-icon.png';
 
 import createMarkup from './js/render-functions';
 import searchPixa from './js/pixabay-api';
@@ -12,7 +12,6 @@ const input = document.querySelector('.input-search');
 const buttonEl = document.querySelector('button');
 
 buttonEl.addEventListener('click', onClick);
-
 
 function onClick(event) {
   event.preventDefault();
