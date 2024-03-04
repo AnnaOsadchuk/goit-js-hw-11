@@ -6,9 +6,8 @@
 */
 @import url('./reset.css');
 
-
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Regular;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -22,3 +21,132 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.container {
+  margin: 0px 156px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', Regular;
+  font-size: 16px;
+  line-height: 150%;
+  color: #2e2f42;
+  display: flex;
+  flex-direction: row;
+  max-width: 360px;
+  margin-top: 36px;
+  margin-left: 534px;
+}
+
+.input-search {
+  font-family: 'Montserrat', Regular;
+  font-size: 16px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  /* display: block; */
+  width: 272px;
+  height: 40px;
+  padding: 0px 10px;
+  margin: 0px;
+  margin-right: 8px;
+}
+.input-search:hover {
+  border: 1px solid #000000;
+}
+.input-search:focus {
+  border: 1px solid #4e75ff;
+}
+
+button {
+  font-family: 'Montserrat', Medium;
+  font-size: 16px;
+  background-color: #4e75ff;
+  width: 91px;
+  height: 40px;
+  line-height: 1.5;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: color 250ms linear, border-color 250ms linear;
+}
+button:hover,
+button:focus {
+  background-color: #6c8cff;
+}
+.gallery {
+  display: grid;
+  max-width: 1128px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 200px;
+  grid-gap: 24px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+}
+.gallery-image:hover {
+  transform: scale(1.03);
+}
+
+.gallery-link {
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  border: 1px solid #808080;
+  transition: transform var(--animation-duration) var(--timing-function);
+}
+
+.gallery-link:hover {
+  cursor: zoom-in;
+}
+
+.gallery-image {
+  width: 360px;
+  height: 152px;
+  object-fit: cover;
+}
+.gallery-item {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 4px;
+}
+.gallery-item label {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.gallery-item li {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 200%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
