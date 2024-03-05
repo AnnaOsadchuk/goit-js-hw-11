@@ -9,22 +9,28 @@ import searchPixa from './js/pixabay-api';
 
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('.input-search');
-const buttonEl = document.querySelector('button');
+const formEl = document.querySelector('.js-form');
+const loader = document.querySelector('.loader');
 
-buttonEl.addEventListener('click', onClick);
+formEl.addEventListener('submit', onSubmit);
+hideLoader();
 
-function onClick(event) {
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
+function onSubmit(event) {
   event.preventDefault();
   const searchQuery = input.value;
+  showLoader();
   searchPixa(searchQuery)
     .then(images => {
       const markup = createMarkup(images);
       gallery.innerHTML = '';
       gallery.insertAdjacentHTML('beforeend', markup);
-      new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-      });
+      lightbox.refresh();
+      hideLoader();
     })
     .catch(message => {
       iziToast.error({
@@ -38,5 +44,14 @@ function onClick(event) {
         timeout: 3000,
         iconUrl: Error_png,
       });
+      hideLoader();
     });
+}
+
+function showLoader() {
+  loader.classList.remove('hidden');
+}
+
+function hideLoader() {
+  loader.classList.add('hidden');
 }

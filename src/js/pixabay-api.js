@@ -6,6 +6,7 @@ export default function searchPixa(searchQuery) {
   const ORIENTATION = 'horizontal';
   const SEFESEARCH = 'true';
   const Link = `${BASE_URL}?key=${API_KEY}&q=${QUERY}&image_type=${IMAGE_TYPE}&orientastion=${ORIENTATION}&seferearch=${SEFESEARCH}`;
+  const gallery = document.querySelector('.gallery');
 
   const message =
     'Sorry, there are no images matching your search query. Please try again!';
@@ -19,6 +20,7 @@ export default function searchPixa(searchQuery) {
     })
     .then(data => {
       if (data.hits.length === 0) {
+        gallery.innerHTML = '';
         throw new Error(message);
       }
 
